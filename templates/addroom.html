@@ -1,0 +1,71 @@
+{% extends 'base.html' %} 
+{% block body %}
+    <div class="hero min-h-screen bg-base-200">
+        <div class="hero-content flex-col lg:flex-row-reverse">
+        <div class="hero-content text-center">
+          <div class="max-w-md">
+            <h1 class="text-5xl font-bold">Add Room</h1>
+            <p class="py-6"></p>
+            <form action="/" method="POST">
+            <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div class="card-body">
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">Room Number</span>
+                    </label>
+                    <input type="text" name="room_number" id="room_number" placeholder="Enter Room Number" class="input input-bordered w-full max-w-xs" />
+                </div>
+                  <div class="form-control" style="display: flex;margin-top: 20px;">
+                   <div style="display: flex;margin-left: 0px;">
+                    <select class="select select-bordered" name="room_type" id="room_type" >
+                        <option disabled selected>Room Type</option>
+                        <option>Single Bed</option>
+                        <option>Double Bed</option>
+                        <option>Three Bed</option>
+                        <option>Four Bed</option>
+                        </select>
+                        <div style="margin-left: 20px;display: flex;">
+                            <input type="text" placeholder="Room Price" name="room_price" id="room_price" class="input input-bordered w-full max-w-xs" />
+                        </div>
+                   </div>  
+                  </div>
+                  
+                  <div class="form-control" style="display: flex;" >
+                    <label class="label">
+                        <span class="label-text">WIFI</span>
+                      </label>
+                    <select class="select select-bordered" name="wifi" id="wifi" >
+                        <option disabled selected>WIFI</option>
+                        <option>Yes</option>
+                          <option>No</option>
+                        </select>
+                        <label class="label">
+                            <span class="label-text">A/C</span>
+                          </label>
+                        <select class="select select-bordered" name="ac" id="ac" >
+                            <option disabled selected>A/C</option>
+                            <option>Yes</option>
+                              <option>No</option>
+                            </select>
+                  </div>
+                  <div class="form-control mt-6">
+                    <label for="my_modal_7" class="btn btn-outline btn-success btn-outline rounded-full " button type="submit" class="btn btn-outline btn-success btn-outline rounded-full " 
+                         for="my_modal_7" style="display: flex;">Add Room</button></label>
+                        <input type="checkbox" id="my_modal_7" class="modal-toggle" />
+                      <div class="modal" ">
+                         <div class="modal-box" style=" margin-left: 30px;">
+                            <h3 class="text-lg font-bold">Room Added</h3>
+                           <p class="py-4"> Room Added Successfully</p>
+                               </div>
+                        <label class="modal-backdrop" for="my_modal_7">Close</label>
+                     </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+        </div>         
+     </div>
+    </div>
+    </div>
+{% endblock body %}
+

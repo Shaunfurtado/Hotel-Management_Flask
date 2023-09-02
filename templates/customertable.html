@@ -1,0 +1,38 @@
+{% extends 'base.html' %} 
+{% block body %}
+  <div class="overflow-x-auto hero-overlay rounded-box " style="display: flex;margin-top: 30px;">
+    <table class="table " style="color: whitesmoke; font-size: medium;">
+      <thead>
+        <tr>
+          <th>Room No.</th>
+          <th>Customer Name</th>
+          <th>Bed</th>
+          <th>Check-in</th>
+          <th>Check-out</th>
+          <th>No. of People</th>
+          <th>Payment-Method</th>
+          <th>Price</th>
+          <th>Availability</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for Customer in reservations %}
+          
+        
+        <tr class="hover">
+          <th>{{hotel.room_number}}</th>
+          <td>{{hotel.first_name}}</td>
+          <td>{{hotel.room_type}}</td>
+          <td>{{hotel.check_in_date}}</td>
+          <td>{{hotel.check_out_date}}</td>
+          <td>{{hotel.num_of_people}}</td>
+          <td>{{hotel.payment}}</td>
+          <td>{{hotel.room_price}}</td>
+          <td>{{hotel.Availability}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock body %}

@@ -1,0 +1,110 @@
+{% extends 'base.html' %} 
+{% block body %}
+    <div class="hero min-h-screen bg-base-200">
+        <div class="hero-content flex-col lg:flex-row-reverse" >
+        <div class="hero-content text-center">
+          <div class="max-w-md">
+            <h1 class="text-5xl font-bold">Room Booking</h1>
+            <!-- <p class="py-6"></p> -->
+            <form action="/" method="POST">
+            <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100" style="margin-top: 20px;">
+                <div class="card-body">
+                  <div class="form-control">
+                    <div style="display: flex; ">
+                        <div class="form-control w-full max-w-xs"  >
+                           <input type="text" placeholder="First Name" name="first_name" id="first_name" class="input input-bordered w-full max-w-xs " style="margin-right: 20px;" />
+                          </div>
+                          <div class="form-control w-full max-w-xs" >
+                         <input type="text" placeholder="Last Name" name="last_name" id="last_name" class="input input-bordered w-full max-w-xs" style="margin-left: 20px;"/>
+                       </div>
+                    </div>
+                    <div style="display: flex; margin-top: 20px;">
+                        <div class="form-control w-full max-w-xs" >
+                          <input type="text" placeholder="Contact Number" name="contact_number" id="contact_number" class="input input-bordered w-full max-w-xs" />
+                        </div>
+                        <div class="form-control w-full max-w-xs">
+                          <input type="text" placeholder="Address" name="address" id="address" class="input input-bordered w-full max-w-xs" style="margin-left: 20px;" />
+                        </div>
+                      </div >
+                      <div class="form-control w-full max-w-xs" style="display: flex;  margin-top: 10px;">
+                        <label class="label">
+                            <span class="label-text">Check-in</span>
+                          </label>
+                        <input type="date" name="Check-in" id="date" placeholder="Check-in" class="input input-bordered w-full max-w-xs">
+                        <label class="label" style="display: flex; margin-top: 10PX;">
+                          <span class="label-text">Check-out</span>
+                        </label>
+                      <input type="date" name="Check-out" id="date" placeholder="Check-out" class="input input-bordered w-full max-w-xs">
+                    </div>
+                        <div class="form-control w-full max-w-xs" >
+                            <div style="display: flex;margin-top: 20px;">
+                            <select class="select select-bordered" name="room_type" id="room_type" >
+                            <option disabled selected >Room Type</option>
+                            <option>Single Bed</option>
+                            <option>Double Bed</option>
+                            <option>Three Bed</option>
+                            <option>Four Bed</option>
+                            </select>
+                    <div class="form-control w-full max-w-xs" style="display: flex;  margin-left: 20px; margin-bottom: 20px;">
+                        <select class="select select-bordered " name="num_of_people" id="num_of_people">
+                          <option disabled selected>No. of People</option>
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                          <option>6</option>
+                          <option>7</option>
+                          <option>8</option>
+                          <option>9</option>
+                          <option>10</option>
+                        </select>
+                      </div>
+                    </div>
+                    
+                      <div class="form-control w-full max-w-xs" style="display: flex; margin-left: 0px; margin-bottom: 20px;">
+                        <input type="text" placeholder="Room Number" name="room_number" id="room_number" class="input input-bordered w-full max-w-xs" />
+                      </div>
+                      <div style="display: flex;margin-left: 0px;">
+                        <select class="select select-bordered" name="wifi" id="wifi">
+                        <option disabled selected>WIFI</option>
+                        <option>Yes</option>
+                          <option>No</option>
+                        </select>
+                      <div style="display: flex;margin-left: 10px;">
+                          <select class="select select-bordered" name="ac" id="ac" >
+                          <option disabled selected>A/C</option>
+                          <option>Yes</option>
+                          <option>No</option>
+                          </select>
+                          <div style="display: flex;margin-left: 10px;">
+                            <select class="select select-bordered" >
+                            <option disabled selected>Payment</option>
+                            <option>Card</option>
+                            <option>Cash</option>
+                            </select>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="form-control mt-6">
+                    <label for="my_modal_7" class="btn btn-outline btn-success btn-outline rounded-full " button type="submit" class="btn btn-outline btn-success btn-outline rounded-full " 
+                         for="my_modal_7" style="display: flex;">Reserve</button></label>
+                        <input type="checkbox" id="my_modal_7" class="modal-toggle" />
+                      <div class="modal" ">
+                         <div class="modal-box" style=" margin-left: 30px;">
+                            <h3 class="text-lg font-bold">Reserved</h3>
+                           <p class="py-4"> The Room has been Successfully Reserved </p>
+                               </div>
+                        <label class="modal-backdrop" for="my_modal_7">Close</label>
+                     </div>
+                  </div>
+            </div>
+    </div>
+    </div>
+  </form>
+    </div>
+    </div>
+    </div>
+    </div>
+{% endblock body %}
