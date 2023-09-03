@@ -1,3 +1,4 @@
+import pymysql
 from flask import Flask, render_template, request, session, redirect, flash
 from flask_sqlalchemy import SQLAlchemy
 # from datetime import datetime
@@ -16,6 +17,13 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/hotel'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+
+username = 'root'
+password = '123456'
+userpass = 'mysql+pymysql://root:123456@'
+server = '127.0.0.1'
+# CHANGE to YOUR database name, with a slash added as shown
+dbname = '/hotel'
 
 
 class reservations(db.Model):
@@ -48,6 +56,10 @@ class reservations(db.Model):
         self.ac = ac
 
 
+def __repr__(self):
+    return f'<reservations {self.first_name}>'
+
+
 class rooms(db.Model):
     room_number = db.Column(db.Integer, nullable=False, primary_key=True)
     room_type = db.Column(db.String(20), nullable=False)
@@ -62,6 +74,10 @@ def __init__(self, room_number, room_type, room_price, wifi, ac):
     self.room_price = room_price
     self.wifi = wifi
     self.ac = ac
+
+
+def __repr__(self):
+    return f'<rooms {self.room_number}>'
 
 
 @app.route('/')
