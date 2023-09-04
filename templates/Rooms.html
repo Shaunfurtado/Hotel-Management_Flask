@@ -1,63 +1,35 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-    <title>Rooms</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css" rel="stylesheet" type="text/css" />
-<script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-    <div class="navbar bg-base-300">
-      <div class="navbar-start">
-        <a class="btn btn-ghost normal-case text-xl" href="index.html">Hotel Room Management</a>
-      </div>
-      <div class="navbar-center hidden lg:flex ">
-        <ul class="menu menu-horizontal px-1">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="Dashboard.html">Dashboard</a></li>
-          <li><a href="Rooms.html">Rooms</a></li>
-          <li><a href="roombook.html">Customer form</a></li>
-          <li><a href="customertable.html">Customer Details</a></li>
-
-          </ul>
-        </div>
-        <div class="navbar-end">
-          <a class="btn" href="addroom.html">Add Room</a>
-        </div>
-      </div> -->
-{% extends 'base.html' %} 
-{% block body %}
-    <div class="overflow-x-auto hero-overlay rounded-box " style="display: flex;margin-top: 30px;">
-      <table class="table " style="color: whitesmoke; font-size: medium;">
-          <thead>
-            <tr>
-              <th>Room No.</th>
-              <th>Bed</th>
-            <th>A/C</th>
-            <th>WIFI</th>
-            <th>Check-in</th>
-            <th>Check-out</th>
-            <th>Price</th>
-            <th>Availability</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for hotel in allrooms %}
-            <tr class="hover"  s>
-              <th>{{hotel.room_number}}</th>
-              <td>{{hotel.room_type}}</td>
-              <td>{{hotel.ac}}</td>
-              <td>{{hotel.wifi}}</td>
-                <td>{{hotel.check_in_date}}</td>
-                <td>{{hotel.check_out_date}}</td>
-                <td>{{hotel.room_price}}</td>
-                <td>{{hotel.room_availability}}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
+{% extends 'base.html' %} {% block body %}
+<div
+  class="overflow-x-auto hero-overlay rounded-box"
+  style="display: flex; margin-top: 30px"
+>
+  <table class="table" style="color: whitesmoke; font-size: medium">
+    <thead>
+      <tr>
+        <th>Room No.</th>
+        <th>Bed</th>
+        <th>A/C</th>
+        <th>WIFI</th>
+        <th>Check-in</th>
+        <th>Check-out</th>
+        <th>Price</th>
+        <th>Availability</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in data %}
+      <tr class="hover" s>
+        <th>{{row[0]}}</th>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+        <td>{{row[3]}}</td>
+        <td>{{row[4]}}</td>
+        <td>{{row[5]}}</td>
+        <td>{{row[6]}}</td>
+        <td>{{row[7]}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock body %}
-    <!-- <script src="script.js"></script>
-</body>
-</html> -->

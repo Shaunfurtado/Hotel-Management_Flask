@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css" rel="stylesheet" type="text/css" />
-<script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
     <div class="navbar bg-base-300">
       <div class="navbar-start">
-        <a href="/" class="btn btn-ghost normal-case text-xl" type="button">Hotel Room Management</a>
+        <a href="/" class="btn btn-ghost normal-case text-xl" type="button"
+          >Hotel Room Management</a
+        >
       </div>
-      <div class="navbar-center hidden lg:flex ">
+      <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
           <li><a href="/" type="button">Home</a></li>
           <li><a href="/Dashboard" type="button">Dashboard</a></li>
           <li><a href="/Rooms" type="button">Rooms</a></li>
           <li><a href="/roombook" type="button">Customer form</a></li>
           <li><a href="/customertable" type="button">Customer Details</a></li>
-
-          </ul>
-        </div>
-        <div class="navbar-end">
-          <a class="btn" href="/addroom" type="button">Add Room</a>
-        </div>
+        </ul>
+      </div>
+      <div class="navbar-end">
+        <a class="btn" href="/addroom" type="button">Add Room</a>
+      </div>
     </div>
 
-{% block body %}
-        
-{% endblock body %}
-      
-</body>
+    {% block body %} {% endblock body %}
+  </body>
 </html>
