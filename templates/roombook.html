@@ -150,7 +150,11 @@
                         <option>No</option>
                       </select>
                       <div style="display: flex; margin-left: 10px">
-                        <select class="select select-bordered">
+                        <select
+                          class="select select-bordered"
+                          name="payment"
+                          id="payment"
+                        >
                           <option disabled selected>Payment</option>
                           <option>Card</option>
                           <option>Cash</option>
@@ -159,15 +163,7 @@
                     </div>
                   </div>
                 </div>
-                <!-- <button
-                  type="submit"
-                  class="btn glass btn-accent active:btn-success"
-                  for="my_modal_7"
-                  style="margin-top: 20px"
-                >
-                  Add Room
-                </button> -->
-                <!-- Open the modal using ID.showModal() method -->
+
                 <button
                   type="submit"
                   class="btn glass active:btn-primary"

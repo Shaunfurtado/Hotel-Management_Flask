@@ -63,9 +63,10 @@ def roombook():
         num_of_people = request.form['num_of_people']
         wifi = request.form['wifi']
         ac = request.form['ac']
+        payment = request.form['payment']
         cursor = mysql.cursor()
-        cursor.execute("INSERT INTO reservations (first_name, last_name, contact_number, address, check_in_date, check_out_date, room_number, room_type, num_of_people, wifi, ac) VALUES (%s, %s, %s,  %s, %s, %s, %s, %s, %s,%s,%s)",
-                       (first_name, last_name, contact_number, address, check_in_date, check_out_date, room_number, room_type, num_of_people, wifi, ac))
+        cursor.execute("INSERT INTO reservations (first_name, last_name, contact_number, address, check_in_date, check_out_date, room_number, room_type, num_of_people, wifi, ac,payment) VALUES (%s,%s, %s, %s,  %s, %s, %s, %s, %s, %s,%s,%s)",
+                       (first_name, last_name, contact_number, address, check_in_date, check_out_date, room_number, room_type, num_of_people, wifi, ac, payment))
         mysql.commit()
         cursor.close()
         flash("Your room has been booked successfully", "success")
