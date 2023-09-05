@@ -1,8 +1,39 @@
 {% extends 'base.html' %} {% block body %}
-<div
-  class="overflow-x-auto hero-overlay rounded-box"
-  style="display: flex; margin-top: 30px"
->
+<div class="stats shadow">
+  <div class="stat">
+    <div class="stat-value">Available Rooms</div>
+  </div>
+</div>
+<div class="overflow-x-auto hero-overlay rounded-box" style="display: flex">
+  <table class="table" style="color: whitesmoke; font-size: medium">
+    <thead>
+      <tr>
+        <th>Room No.</th>
+        <th>Bed</th>
+        <th>A/C</th>
+        <th>WIFI</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in data %}
+      <tr class="hover" s>
+        <th>{{row[0]}}</th>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+        <td>{{row[3]}}</td>
+        <td>{{row[4]}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div class="stats shadow">
+  <div class="stat">
+    <div class="stat-value">Booked Rooms</div>
+  </div>
+</div>
+<div class="overflow-x-auto hero-overlay rounded-box" style="display: flex">
   <table class="table" style="color: whitesmoke; font-size: medium">
     <thead>
       <tr>
@@ -12,12 +43,12 @@
         <th>WIFI</th>
         <th>Check-in</th>
         <th>Check-out</th>
+        <th>num_of_people</th>
         <th>Price</th>
-        <th>Availability</th>
       </tr>
     </thead>
     <tbody>
-      {% for row in data %}
+      {% for row in data1 %}
       <tr class="hover" s>
         <th>{{row[0]}}</th>
         <td>{{row[1]}}</td>

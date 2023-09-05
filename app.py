@@ -18,14 +18,19 @@ mysql = pymysql.connect(
 
 
 @app.route('/')
-def home():
+def index():
     return render_template('index.html')
 
 
 @app.route('/Dashboard', methods=['GET', 'POST'])
 def dashboard():
-
-    return render_template('Dashboard.html')
+    cursor = mysql.cursor()
+    cursor.execute(
+        "SELECT COUNT(*) AS total_rooms, SUM(CASE WHEN r.room_number NOT IN (SELECT room_number FROM reservations) THEN 1 ELSE 0 END) AS available_rooms, SUM(CASE WHEN r.room_number IN (SELECT room_number FROM reservations) THEN 1 ELSE 0 END) AS reserved_rooms, CAST((SELECT SUM(num_of_people) FROM reservations) AS UNSIGNED) AS total_people FROM rooms r;"
+    )
+    data = cursor.fetchall()
+    cursor.close()
+    return render_template('Dashboard.html', data=data)
 
 # Tables
 
@@ -33,10 +38,14 @@ def dashboard():
 @app.route('/Rooms', methods=['GET', 'POST'])
 def Rooms():
     cursor = mysql.cursor()
-    cursor.execute("SELECT r.room_number, r.room_type, r.ac, r.wifi, re.check_in_date, re.check_out_date,r.room_price  FROM rooms r, reservations re WHERE r.room_number = re.room_number")
+    cursor.execute(
+        "SELECT r.room_number, r.room_type, r.ac, r.wifi, r.room_price FROM rooms r LEFT JOIN reservations re ON r.room_number = re.room_number WHERE re.room_number IS NULL")
     data = cursor.fetchall()
+    cursor.execute(
+        "SELECT r.room_number, r.room_type, r.ac, r.wifi, re.check_in_date, re.check_out_date,re.num_of_people, r.room_price FROM rooms r, reservations re WHERE r.room_number = re.room_number")
+    data1 = cursor.fetchall()
     cursor.close()
-    return render_template('Rooms.html', data=data)
+    return render_template('Rooms.html', data=data, data1=data1)
 
 
 @app.route('/customertable', methods=['GET', 'POST'])
@@ -46,6 +55,7 @@ def customertable():
     data = cursor.fetchall()
     cursor.close()
     return render_template('customertable.html', data=data)
+
 # Form Entry
 
 

@@ -1,22 +1,24 @@
 {% extends 'base.html' %} {% block body %}
 <div class="stat place-items-center stats badge-ghost" style="margin-top: 40px">
   <div class="stats stats-vertical lg:stats-horizontal shadow">
+    {% for row in data %}
     <div class="stat place-items-center">
       <div class="stat-title">Total Rooms</div>
-      <div class="stat-value">20</div>
+      <div class="stat-value">{{row[0]}}</div>
     </div>
     <div class="stat place-items-center">
       <div class="stat-title">Available Rooms</div>
-      <div class="stat-value">8</div>
+      <div class="stat-value">{{row[1]}}</div>
     </div>
     <div class="stat place-items-center">
       <div class="stat-title">Reserved Rooms</div>
-      <div class="stat-value">12</div>
+      <div class="stat-value">{{row[2]}}</div>
     </div>
     <div class="stat place-items-center">
       <div class="stat-title">Total Occupants</div>
-      <div class="stat-value">50</div>
+      <div class="stat-value">{{row[3]}}</div>
     </div>
+    {% endfor %}
   </div>
 </div>
 {% endblock body %}

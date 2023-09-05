@@ -24,3 +24,9 @@ CREATE TABLE rooms (
   check_in_date DATE references reservations(check_in_date),
   check_out_date DATE references reservations(check_out_date)
 );
+CREATE TABLE users (
+    username VARCHAR(15) NOT NULL,
+    password VARCHAR(20) NOT NULL,
+    PRIMARY KEY (username)
+);
+
