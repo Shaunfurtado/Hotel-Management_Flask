@@ -59,9 +59,33 @@ def customertable():
 # Form Entry
 
 
+# @app.route('/roombook', methods=['GET', 'POST'])
+# def roombook():
+#     if request.method == 'POST':
+#         first_name = request.form['first_name']
+#         last_name = request.form['last_name']
+#         contact_number = request.form['contact_number']
+#         address = request.form['address']
+#         check_in_date = request.form['check_in_date']
+#         check_out_date = request.form['check_out_date']
+#         room_number = request.form['room_number']
+#         room_type = request.form['room_type']
+#         num_of_people = request.form['num_of_people']
+#         wifi = request.form['wifi']
+#         ac = request.form['ac']
+#         payment = request.form['payment']
+#         cursor = mysql.cursor()
+#         cursor.execute("INSERT INTO reservations (first_name, last_name, contact_number, address, check_in_date, check_out_date, room_number, room_type, num_of_people, wifi, ac,payment) VALUES (%s,%s, %s, %s,  %s, %s, %s, %s, %s, %s,%s,%s)",
+#                        (first_name, last_name, contact_number, address, check_in_date, check_out_date, room_number, room_type, num_of_people, wifi, ac, payment))
+#         mysql.commit()
+#         cursor.close()
+#         flash("Your room has been booked successfully", "success")
+#     return render_template('roombook.html')
+
 @app.route('/roombook', methods=['GET', 'POST'])
 def roombook():
     if request.method == 'POST':
+        # ... (Your existing code to retrieve form data)
         first_name = request.form['first_name']
         last_name = request.form['last_name']
         contact_number = request.form['contact_number']
@@ -74,12 +98,21 @@ def roombook():
         wifi = request.form['wifi']
         ac = request.form['ac']
         payment = request.form['payment']
+        # Check if the room_number exists in the rooms table
         cursor = mysql.cursor()
-        cursor.execute("INSERT INTO reservations (first_name, last_name, contact_number, address, check_in_date, check_out_date, room_number, room_type, num_of_people, wifi, ac,payment) VALUES (%s,%s, %s, %s,  %s, %s, %s, %s, %s, %s,%s,%s)",
-                       (first_name, last_name, contact_number, address, check_in_date, check_out_date, room_number, room_type, num_of_people, wifi, ac, payment))
-        mysql.commit()
-        cursor.close()
-        flash("Your room has been booked successfully", "success")
+        cursor.execute(
+            "SELECT COUNT(*) FROM rooms WHERE room_number = %s", (room_number,))
+        room_exists = cursor.fetchone()[0]
+
+        if room_exists:
+            cursor.execute("INSERT INTO reservations (first_name, last_name, contact_number, address, check_in_date, check_out_date, room_number, room_type, num_of_people, wifi, ac, payment) VALUES (%s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                           (first_name, last_name, contact_number, address, check_in_date, check_out_date, room_number, room_type, num_of_people, wifi, ac, payment))
+            mysql.commit()
+            cursor.close()
+            flash("Your room has been booked successfully", "success")
+        else:
+            flash("Invalid room number. Please enter a valid room number.", "error")
+
     return render_template('roombook.html')
 
 
