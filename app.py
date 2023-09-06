@@ -51,7 +51,7 @@ def Rooms():
 @app.route('/customertable', methods=['GET', 'POST'])
 def customertable():
     cursor = mysql.cursor()
-    cursor.execute("SELECT re.room_number, re.first_name, re.room_type, re.check_in_date, re.check_out_date, re.num_of_people,re.payment, r.room_price  FROM reservations re,rooms r WHERE re.room_number = r.room_number")
+    cursor.execute("SELECT r.room_number, re.first_name, r.room_type, re.check_in_date, re.check_out_date, re.num_of_people,re.payment, r.room_price  FROM reservations re,rooms r WHERE re.room_number = r.room_number")
     data = cursor.fetchall()
     cursor.close()
     return render_template('customertable.html', data=data)
