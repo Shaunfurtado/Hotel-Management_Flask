@@ -17,7 +17,7 @@
 If any issues encountered While activating virtual environment, Run(Powershell(admin)):
 
 ```
-Set-ExecutionPolicy --Unrestricted
+Set-ExecutionPolicy Unrestricted
 ```
 
 ### Installing Flask and MySQLclient
