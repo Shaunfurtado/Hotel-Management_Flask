@@ -14,6 +14,12 @@
  .\env\Scripts\activate.ps1
 ```
 
+If any issues encountered While activating virtual environment, Run(Powershell(admin)):
+
+```
+Set-ExecutionPolicy --Unrestricted
+```
+
 ### Installing Flask and MySQLclient
 
 ```
